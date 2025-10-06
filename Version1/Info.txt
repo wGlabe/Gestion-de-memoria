@@ -1,0 +1,33 @@
+Versión 1.0 del Simulador de Gestión de Memoria
+Asunto: Establecimiento de la línea base del simulador con Particiones Estáticas de Tamaño Fijo.
+
+1. Resumen Ejecutivo
+La versión 1.0 representa la fundación del Simulador de Gestión de Memoria. El objetivo principal de esta versión inicial fue construir un entorno de simulación robusto y funcional, implementando el método más fundamental de gestión de memoria: Particiones Estáticas de Tamaño Fijo. Esta versión sirve como el punto de partida y la base comparativa para todas las futuras implementaciones de algoritmos más avanzados.
+
+2. Funcionalidades Clave Implementadas
+Método de Gestión - Particiones Estáticas de Tamaño Fijo:
+
+El simulador inicializa la memoria total de 16 MiB dividiéndola en un número predeterminado de particiones, todas de idéntico tamaño (ej. 8 particiones de 2 MiB).
+
+Comportamiento: Este mapa de memoria es rígido; las particiones no pueden cambiar de tamaño ni de posición durante la ejecución de la simulación.
+
+Propósito Analítico: Demostrar la simplicidad y las limitaciones inherentes de un esquema de particionamiento fijo, sentando las bases para entender la necesidad de métodos más flexibles.
+
+Algoritmo de Asignación - Primer Ajuste (First Fit):
+
+Para la asignación de procesos, se implementó el algoritmo de "primer ajuste". El sistema recorre las particiones en orden secuencial y asigna el proceso a la primera partición libre que tenga el tamaño suficiente para contenerlo.
+
+Visualización de Datos en Tiempo Real:
+
+Barra de Memoria: Un componente visual que representa el estado de la memoria principal. Los bloques de colores distintos indican si una partición está libre u ocupada, y su tamaño es proporcional al de la partición.
+
+Tabla de Particiones: Una vista detallada que tabula cada partición, mostrando su ID, el ID del proceso que la ocupa (si aplica), su estado, dirección base (en decimal y hexadecimal), tamaño total y la fragmentación interna.
+
+Cálculo de Fragmentación Interna:
+
+Una característica central de la v1 es su capacidad para calcular y mostrar la fragmentación interna. Cuando un proceso es más pequeño que la partición que ocupa, el simulador cuantifica y reporta este espacio desperdiciado, uno de los principales inconvenientes de este método.
+
+3. Arquitectura y Operaciones Básicas
+La arquitectura se basa en una interfaz HTML/CSS (utilizando Tailwind CSS para el estilizado) y un motor de lógica en JavaScript puro.
+
+El usuario puede realizar tres operaciones fundamentales: agregar un proceso de una lista predefinida, liberar un proceso específico mediante su ID, y reiniciar la simulación a su estado inicial.
