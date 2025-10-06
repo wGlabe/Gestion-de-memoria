@@ -1,4 +1,4 @@
-Informe de Actualización: Versión 2.0 del Simulador de Gestión de Memoria
+Actualización: Versión 2.0 del Simulador de Gestión de Memoria
 Asunto: Implementación de Particiones Estáticas de Tamaño Variable y mejoras de código.
 
 1. Resumen Ejecutivo
