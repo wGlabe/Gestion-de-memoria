@@ -1,0 +1,37 @@
+Versión 3.0 del Simulador de Gestión de Memoria
+Asunto: Implementación de Particiones Dinámicas sin Compactación y Algoritmos de Asignación.
+
+1. Resumen Ejecutivo
+La versión 3.0 marca un avance significativo en la funcionalidad del simulador, introduciendo el método de Particiones Dinámicas. Este enfoque abandona la estructura rígida de las particiones estáticas y permite una asignación de memoria mucho más flexible y eficiente en términos de espacio. Con esta actualización, el simulador ahora puede modelar la creación, división y fusión de bloques de memoria en tiempo de ejecución, además de permitir al usuario experimentar con tres algoritmos de asignación clásicos.
+
+2. Nuevas Funcionalidades Implementadas
+Modelo de Memoria Dinámica:
+
+Al seleccionar este modo, la memoria ya no se subdivide al inicio. En su lugar, se presenta como un único bloque contiguo de memoria libre (16 MiB). Las particiones se crean dinámicamente según las solicitudes de los procesos.
+
+Implementación de Algoritmos de Asignación:
+
+El simulador ahora incorpora tres estrategias distintas para seleccionar el bloque de memoria libre a utilizar:
+
+Primer Ajuste (First Fit): Asigna el primer bloque libre encontrado que sea lo suficientemente grande. Prioriza la velocidad.
+
+Mejor Ajuste (Best Fit): Recorre toda la lista de bloques libres y selecciona el más pequeño que pueda alojar al proceso. Su objetivo es minimizar el tamaño del bloque libre restante.
+
+Peor Ajuste (Worst Fit): Recorre la lista y selecciona el bloque libre más grande disponible. La intención es dejar un bloque restante lo más grande posible para futuros procesos.
+
+Mecanismo de División de Bloques:
+
+Cuando un proceso es asignado a un bloque libre de mayor tamaño, el sistema automáticamente divide ese bloque. Se crea una nueva partición del tamaño exacto del proceso (ocupada) y el espacio sobrante se convierte en un nuevo bloque libre más pequeño.
+
+Mecanismo de Fusión de Bloques Libres:
+
+Al liberar un proceso, el sistema realiza una comprobación de adyacencia. Si el bloque recién liberado es contiguo a otro(s) bloque(s) libre(s), se fusionan para formar un único bloque libre más grande. Esto combate activamente la fragmentación.
+
+Eliminación de la Fragmentación Interna:
+
+Dado que las particiones se crean a la medida exacta de los procesos, el concepto de fragmentación interna queda eliminado en este modo, lo cual es una ventaja fundamental sobre los métodos estáticos.
+
+3. Modificaciones en la Interfaz de Usuario (UI)
+Se ha habilitado la opción "Particiones Dinámicas (Sin Compactación)".
+
+El menú desplegable de "Algoritmo de Asignación" se activa y se vuelve funcional cuando se selecciona el modo dinámico, permitiendo al usuario cambiar de estrategia en tiempo real.
