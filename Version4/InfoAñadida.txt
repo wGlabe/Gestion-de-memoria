@@ -1,0 +1,25 @@
+Versión 4.0 del Simulador de Gestión de Memoria
+Asunto: Implementación de Particiones Dinámicas con Compactación de Memoria.
+
+1. Resumen Ejecutivo
+La versión 4.0 culmina el desarrollo del simulador introduciendo la estrategia más avanzada de gestión de memoria: Particiones Dinámicas con Compactación. Esta implementación aborda directamente la principal deficiencia del método dinámico sin compactación—la fragmentación externa. Al incorporar un mecanismo para reorganizar la memoria, el simulador ahora puede recuperar espacio fragmentado y consolidarlo en un único bloque contiguo y utilizable, representando una solución completa y robusta a los desafíos de la asignación dinámica.
+
+2. Nuevas Funcionalidades Implementadas
+Mecanismo de Compactación de Memoria:
+
+Se ha desarrollado la función compactar_memoria(), la cual constituye el núcleo de esta actualización.
+
+Comportamiento: Al ser invocada, esta función identifica todos los bloques de memoria ocupados, los reubica secuencialmente al inicio de la memoria principal, y recalcula sus direcciones base. Todos los fragmentos libres dispersos se consolidan en un único y gran bloque de memoria libre al final.
+
+Propósito Analítico: Demostrar la técnica más efectiva para eliminar la fragmentación externa, permitiendo que el espacio total libre esté siempre disponible como un bloque contiguo.
+
+Doble Modalidad de Activación de la Compactación:
+
+Compactación Manual: El usuario puede iniciar el proceso de compactación en cualquier momento a través de un nuevo botón en la interfaz. Esto permite un control explícito para observar el antes y el después de la reorganización.
+
+Compactación Automática: Si una solicitud para agregar un proceso falla por falta de un bloque contiguo lo suficientemente grande (a pesar de que el espacio libre total sea suficiente), el sistema intentará realizar una compactación de forma automática. Tras la reorganización, volverá a intentar la asignación del proceso.
+
+3. Modificaciones en la Interfaz de Usuario (UI)
+Se ha habilitado la opción final del menú: "Particiones Dinámicas (Con Compactación)".
+
+Se ha añadido un nuevo botón, "Compactar Memoria", que se activa exclusivamente cuando se selecciona este modo de gestión.
