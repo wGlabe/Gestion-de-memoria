@@ -1,0 +1,24 @@
+Informe de Actualización: Versión 2.0 del Simulador de Gestión de Memoria
+Asunto: Implementación de Particiones Estáticas de Tamaño Variable y mejoras de código.
+
+1. Resumen Ejecutivo
+La versión 2.0 del simulador introduce una funcionalidad clave que expande sus capacidades de modelado: la gestión de memoria mediante Particiones Estáticas de Tamaño Variable. Esta actualización complementa el método inicial de particiones fijas, permitiendo una comparación directa entre dos estrategias de asignación estática. Adicionalmente, se ha refactorizado el código base para mejorar su eficiencia y escalabilidad.
+
+2. Nuevas Funcionalidades Implementadas
+Método de Particiones Estáticas de Tamaño Variable:
+
+Se ha añadido la lógica para inicializar la memoria principal con un conjunto de particiones de tamaños heterogéneos y predefinidos.
+
+Comportamiento: Al seleccionar este modo, el sistema crea un mapa de memoria con divisiones de 1 MiB, 2 MiB, 3 MiB, 4 MiB y 6 MiB. Esto simula un entorno donde el administrador del sistema ha asignado porciones de memoria de diferente capacidad para distintos tipos de procesos.
+
+Propósito Analítico: Esta funcionalidad permite al usuario observar cómo la variedad en el tamaño de las particiones afecta la asignación de procesos y, de manera crucial, el grado de fragmentación interna generada.
+
+3. Mejoras Técnicas y Refactorización de Código
+Generalización de la Función de Asignación:
+
+La función asignar_memoria_estatica_fija de la v1 ha sido renombrada a asignar_memoria_estatica.
+
+Justificación: Se identificó que el algoritmo de "primer ajuste" implementado es universal para cualquier estrategia de particionamiento estático (sea de tamaño fijo o variable). Al generalizar la función, se elimina la redundancia de código, se adhieren al principio DRY (Don't Repeat Yourself) y se crea una base de código más mantenible para futuras expansiones.
+
+4. Modificaciones en la Interfaz de Usuario (UI)
+Se ha habilitado el control de selección (radio button) para el modo "Particiones Estáticas de Tamaño Variable", haciendo la nueva funcionalidad accesible para el usuario final.
