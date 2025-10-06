@@ -1,0 +1,26 @@
+Versión 5.0 del Simulador de Gestión de Memoria
+Asunto: Implementación de la Creación de Programas Personalizados por el Usuario.
+
+1. Resumen Ejecutivo
+La versión 5.0 introduce la característica final del simulador, enfocada en la interactividad y la personalización de la experiencia del usuario. Se ha añadido la funcionalidad que permite a los usuarios crear y agregar sus propios programas a la simulación, especificando un nombre y un tamaño de memoria. Esta actualización transforma el simulador de una herramienta de demostración con escenarios predefinidos a una plataforma de experimentación dinámica, donde los usuarios pueden diseñar y probar sus propios casos de uso.
+
+2. Nuevas Funcionalidades Implementadas
+Creación de Programas Personalizados:
+
+El usuario ahora puede definir nuevos programas a través de campos de entrada en la interfaz, proveyendo un nombre y un tamaño en MiB.
+
+Comportamiento: Al enviar el formulario, el nuevo programa se añade al objeto programas en el script. Inmediatamente después, la lista desplegable de procesos se actualiza dinámicamente para incluir la nueva opción, la cual queda disponible para ser agregada a la memoria.
+
+Propósito Analítico: Esta capacidad otorga al usuario el poder de probar escenarios de memoria específicos y complejos que no estaban cubiertos por los programas predefinidos. Permite, por ejemplo, simular el impacto de procesos muy grandes, muy pequeños o de tamaños muy específicos en los diferentes algoritmos de gestión.
+
+3. Mejoras Técnicas y Refactorización de Código
+Actualización Dinámica del Selector de Programas:
+
+La lógica para poblar el menú desplegable (<select>) fue refactorizada en su propia función, actualizar_selector_programas().
+
+Justificación: Este cambio permite que la función sea llamada no solo al cargar la página, sino cada vez que un nuevo programa personalizado es añadido, asegurando que la interfaz de usuario siempre refleje el estado actual de la lista de programas disponibles.
+
+4. Modificaciones en la Interfaz de Usuario (UI)
+Se ha añadido una nueva sección en el panel de controles titulada "Agregar Programa Personalizado".
+
+Esta sección contiene dos campos de entrada (input) para el nombre y el tamaño del programa, y un botón para confirmar y añadir el programa a la lista.
