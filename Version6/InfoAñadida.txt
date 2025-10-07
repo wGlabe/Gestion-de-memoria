@@ -1,0 +1,28 @@
+Versión 6.0 del Simulador de Gestión de Memoria
+Asunto: Extensión de Algoritmos de Ajuste al modo de Particiones Estáticas de Tamaño Variable.
+
+1. Resumen Ejecutivo
+La versión 6.0 introduce un refinamiento significativo en la capacidad analítica del simulador, extendiendo la funcionalidad de los algoritoritmos de asignación (Primer, Mejor y Peor Ajuste) al modo de Particiones Estáticas de Tamaño Variable. Previamente, estos algoritmos solo estaban disponibles para los modos de particionamiento dinámico. Esta actualización permite a los usuarios realizar una comparación más profunda y directa sobre cómo las diferentes estrategias de selección de particiones afectan la eficiencia y la fragmentación interna en un entorno de memoria predefinido pero heterogéneo.
+
+2. Mejoras Técnicas Implementadas
+Refactorización de la Asignación Estática: La función asignar_memoria_estatica() fue actualizada. Ahora, no solo busca la primera partición disponible, sino que lee el valor seleccionado en el menú de algoritmos y aplica la estrategia correspondiente:
+
+Primer Ajuste: Selecciona la primera partición libre encontrada que sea lo suficientemente grande.
+
+Mejor Ajuste: De entre todas las particiones libres y adecuadas, selecciona aquella cuyo tamaño sea el más cercano (pero mayor o igual) al del proceso, minimizando la fragmentación interna resultante.
+
+Peor Ajuste: De entre todas las particiones libres y adecuadas, selecciona la de mayor tamaño, dejando un fragmento interno más grande.
+
+3. Cambios en la Interfaz de Usuario
+Activación Dinámica de Controles: Para dar soporte a la nueva funcionalidad, la interfaz de usuario fue actualizada. La función reiniciar_memoria() ahora contiene lógica para habilitar o deshabilitar dinámicamente el menú desplegable de "Algoritmo de Asignación".
+
+Comportamiento Específico: El menú de algoritmos ahora se mantiene activo para los modos de "Particiones Estáticas de Tamaño Variable" y los dos modos dinámicos. Se desactiva visualmente (reduciendo su opacidad) y funcionalmente solo cuando el usuario selecciona "Particiones Estáticas de Tamaño Fijo", ya que en ese contexto la única estrategia posible es el primer ajuste. Este cambio asegura que la interfaz sea intuitiva y solo presente al usuario las opciones válidas para el modo seleccionado.
+
+4. Impacto Analítico y Educativo
+Esta actualización enriquece considerablemente la experiencia de aprendizaje. Ahora el usuario puede:
+
+Observar que los algoritmos de ajuste no son exclusivos de la gestión dinámica.
+
+Analizar cómo la elección de una estrategia (ej. Mejor Ajuste vs. Peor Ajuste) impacta directamente en la magnitud de la fragmentación interna en un sistema estático.
+
+Comparar el comportamiento de un mismo algoritmo en dos contextos diferentes: dinámico (donde crea huecos) y estático variable (donde elige entre particiones existentes).
